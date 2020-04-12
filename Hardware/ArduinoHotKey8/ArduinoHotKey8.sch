@@ -14,18 +14,6 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L SparkFun-Boards:ARDUINO_PRO_MINI B1
-U 1 1 5E9319F5
-P 2300 2050
-F 0 "B1" H 2300 3110 45  0000 C CNN
-F 1 "ARDUINO_PRO_MINI" H 2300 3026 45  0000 C CNN
-F 2 "SparkFun-KiCad-Libraries:ARDUINO_PRO_MINI" H 2300 3000 20  0001 C CNN
-F 3 "" H 2300 2050 50  0001 C CNN
-F 4 "XXX-00000" H 2300 2931 60  0000 C CNN "Feld4"
-	1    2300 2050
-	1    0    0    -1  
-$EndComp
-$Comp
 L Switch:SW_Push SW0
 U 1 1 5E933259
 P 2650 4300
@@ -865,4 +853,60 @@ Wire Wire Line
 Wire Wire Line
 	8650 5550 8650 5600
 Connection ~ 8450 5550
+$Comp
+L SparkFun-Boards:SPARKFUN_PRO_MICRO B1
+U 1 1 5E98BB34
+P 2300 1900
+F 0 "B1" H 2300 2810 45  0000 C CNN
+F 1 "SPARKFUN_PRO_MICRO" H 2300 2726 45  0000 C CNN
+F 2 "SparkFun-KiCad-Libraries:SPARKFUN_PRO_MICRO" H 2300 2700 20  0001 C CNN
+F 3 "" H 2300 1900 50  0001 C CNN
+F 4 "XXX-00000" H 2300 2631 60  0000 C CNN "Feld4"
+	1    2300 1900
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole H1
+U 1 1 5E99EFEA
+P 5500 1500
+F 0 "H1" H 5600 1546 50  0000 L CNN
+F 1 "MountingHole" H 5600 1455 50  0000 L CNN
+F 2 "MountingHole:MountingHole_3.2mm_M3" H 5500 1500 50  0001 C CNN
+F 3 "~" H 5500 1500 50  0001 C CNN
+	1    5500 1500
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole H2
+U 1 1 5E99FCF9
+P 5500 1750
+F 0 "H2" H 5600 1796 50  0000 L CNN
+F 1 "MountingHole" H 5600 1705 50  0000 L CNN
+F 2 "MountingHole:MountingHole_3.2mm_M3" H 5500 1750 50  0001 C CNN
+F 3 "~" H 5500 1750 50  0001 C CNN
+	1    5500 1750
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole H3
+U 1 1 5E99FDBB
+P 5500 2000
+F 0 "H3" H 5600 2046 50  0000 L CNN
+F 1 "MountingHole" H 5600 1955 50  0000 L CNN
+F 2 "MountingHole:MountingHole_3.2mm_M3" H 5500 2000 50  0001 C CNN
+F 3 "~" H 5500 2000 50  0001 C CNN
+	1    5500 2000
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole H4
+U 1 1 5E99FEBA
+P 5500 2250
+F 0 "H4" H 5600 2296 50  0000 L CNN
+F 1 "MountingHole" H 5600 2205 50  0000 L CNN
+F 2 "MountingHole:MountingHole_3.2mm_M3" H 5500 2250 50  0001 C CNN
+F 3 "~" H 5500 2250 50  0001 C CNN
+	1    5500 2250
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
