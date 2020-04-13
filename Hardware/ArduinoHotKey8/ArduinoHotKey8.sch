@@ -909,4 +909,71 @@ F 3 "~" H 5500 2250 50  0001 C CNN
 	1    5500 2250
 	1    0    0    -1  
 $EndComp
+$Comp
+L Connector:AVR-ISP-6 J1
+U 1 1 5E94559F
+P 4450 1600
+F 0 "J1" H 4171 1696 50  0000 R CNN
+F 1 "AVR-ISP-6" H 4171 1605 50  0000 R CNN
+F 2 "Connector_IDC:IDC-Header_2x03_P2.54mm_Vertical" V 4200 1650 50  0001 C CNN
+F 3 " ~" H 3175 1050 50  0001 C CNN
+	1    4450 1600
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:VCC #PWR0105
+U 1 1 5E9474AA
+P 4350 850
+F 0 "#PWR0105" H 4350 700 50  0001 C CNN
+F 1 "VCC" H 4367 1023 50  0000 C CNN
+F 2 "" H 4350 850 50  0001 C CNN
+F 3 "" H 4350 850 50  0001 C CNN
+	1    4350 850 
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0106
+U 1 1 5E947B34
+P 4350 2100
+F 0 "#PWR0106" H 4350 1850 50  0001 C CNN
+F 1 "GND" H 4355 1927 50  0000 C CNN
+F 2 "" H 4350 2100 50  0001 C CNN
+F 3 "" H 4350 2100 50  0001 C CNN
+	1    4350 2100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4350 2000 4350 2100
+Wire Wire Line
+	4350 850  4350 1100
+Wire Wire Line
+	4850 1400 5000 1400
+Wire Wire Line
+	4850 1500 5000 1500
+Wire Wire Line
+	4850 1600 5000 1600
+Wire Wire Line
+	4850 1700 5000 1700
+Text Label 5000 1400 0    50   ~ 0
+MISO
+Text Label 5000 1500 0    50   ~ 0
+MOSI
+Text Label 5000 1600 0    50   ~ 0
+SCK
+Text Label 5000 1700 0    50   ~ 0
+RST
+Text Label 2950 1550 0    50   ~ 0
+RST
+Wire Wire Line
+	2750 2150 2950 2150
+Wire Wire Line
+	2750 2250 2950 2250
+Wire Wire Line
+	2750 2350 2950 2350
+Text Label 2950 2250 0    50   ~ 0
+MISO
+Text Label 2950 2350 0    50   ~ 0
+MOSI
+Text Label 2950 2150 0    50   ~ 0
+SCK
 $EndSCHEMATC
