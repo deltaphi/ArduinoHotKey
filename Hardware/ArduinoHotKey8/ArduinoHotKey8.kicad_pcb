@@ -2,7 +2,7 @@
 
   (general
     (thickness 1.6)
-    (drawings 8)
+    (drawings 9)
     (tracks 130)
     (zones 0)
     (modules 39)
@@ -1703,6 +1703,9 @@
     )
   )
 
+  (gr_text "ArduinoHotKey\n8 Buttons V1.0" (at 68.58 31.75) (layer F.SilkS)
+    (effects (font (size 1 1) (thickness 0.15)))
+  )
   (gr_arc (start 111.76 92.71) (end 111.76 97.79) (angle -90) (layer Edge.Cuts) (width 0.05))
   (gr_arc (start 25.4 92.71) (end 20.32 92.71) (angle -90) (layer Edge.Cuts) (width 0.05))
   (gr_arc (start 25.4 25.4) (end 25.4 20.32) (angle -90) (layer Edge.Cuts) (width 0.05))
