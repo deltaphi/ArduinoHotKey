@@ -1,0 +1,979 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Switch:SW_Push SW0
+U 1 1 5E933259
+P 2650 4300
+F 0 "SW0" V 2604 4448 50  0000 L CNN
+F 1 "SW_Push" V 2695 4448 50  0000 L CNN
+F 2 "Button_Switch_Keyboard:SW_Cherry_MX_1.00u_PCB" H 2650 4500 50  0001 C CNN
+F 3 "~" H 2650 4500 50  0001 C CNN
+	1    2650 4300
+	0    1    1    0   
+$EndComp
+$Comp
+L power:VCC #PWR0101
+U 1 1 5E93409B
+P 2850 850
+F 0 "#PWR0101" H 2850 700 50  0001 C CNN
+F 1 "VCC" H 2867 1023 50  0000 C CNN
+F 2 "" H 2850 850 50  0001 C CNN
+F 3 "" H 2850 850 50  0001 C CNN
+	1    2850 850 
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0102
+U 1 1 5E934910
+P 3500 3000
+F 0 "#PWR0102" H 3500 2750 50  0001 C CNN
+F 1 "GND" H 3505 2827 50  0000 C CNN
+F 2 "" H 3500 3000 50  0001 C CNN
+F 3 "" H 3500 3000 50  0001 C CNN
+	1    3500 3000
+	1    0    0    -1  
+$EndComp
+$Comp
+L Switch:SW_Push SW_Reset1
+U 1 1 5E934ABA
+P 2950 1750
+F 0 "SW_Reset1" V 2904 1898 50  0000 L CNN
+F 1 "SW_Push" V 2995 1898 50  0000 L CNN
+F 2 "Button_Switch_THT:SW_PUSH_6mm" H 2950 1950 50  0001 C CNN
+F 3 "~" H 2950 1950 50  0001 C CNN
+	1    2950 1750
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	2750 1650 2850 1650
+Wire Wire Line
+	2850 1650 2850 850 
+Wire Wire Line
+	2750 1450 3500 1450
+Wire Wire Line
+	3500 1450 3500 1950
+Wire Wire Line
+	2750 1550 2950 1550
+Wire Wire Line
+	2950 1950 3500 1950
+Connection ~ 3500 1950
+Wire Wire Line
+	3500 1950 3500 3000
+Wire Wire Line
+	1850 1750 1000 1750
+Wire Wire Line
+	1850 1850 1000 1850
+Wire Wire Line
+	1850 1950 1000 1950
+Wire Wire Line
+	1850 2050 1000 2050
+Wire Wire Line
+	1850 2150 1000 2150
+Wire Wire Line
+	1850 2250 1000 2250
+Wire Wire Line
+	1850 2350 1000 2350
+Wire Wire Line
+	1850 2450 1000 2450
+Text Label 1000 1750 0    50   ~ 0
+BUTTON0
+Text Label 1000 1850 0    50   ~ 0
+BUTTON1
+Text Label 1000 1950 0    50   ~ 0
+BUTTON2
+Text Label 1000 2050 0    50   ~ 0
+BUTTON3
+Text Label 1000 2150 0    50   ~ 0
+BUTTON4
+Text Label 1000 2250 0    50   ~ 0
+BUTTON5
+Text Label 1000 2350 0    50   ~ 0
+BUTTON6
+Text Label 1000 2450 0    50   ~ 0
+BUTTON7
+$Comp
+L Device:C C1
+U 1 1 5E93A718
+P 2050 4300
+F 0 "C1" H 2165 4346 50  0000 L CNN
+F 1 "100n" H 2165 4255 50  0000 L CNN
+F 2 "Capacitor_THT:C_Disc_D3.0mm_W1.6mm_P2.50mm" H 2088 4150 50  0001 C CNN
+F 3 "~" H 2050 4300 50  0001 C CNN
+	1    2050 4300
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R2
+U 1 1 5E93AB0A
+P 2450 3900
+F 0 "R2" H 2520 3946 50  0000 L CNN
+F 1 "10k" H 2520 3855 50  0000 L CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 2380 3900 50  0001 C CNN
+F 3 "~" H 2450 3900 50  0001 C CNN
+	1    2450 3900
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R1
+U 1 1 5E93B323
+P 2250 4050
+F 0 "R1" V 2043 4050 50  0000 C CNN
+F 1 "10k" V 2134 4050 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 2180 4050 50  0001 C CNN
+F 3 "~" H 2250 4050 50  0001 C CNN
+	1    2250 4050
+	0    1    1    0   
+$EndComp
+$Comp
+L power:VCC #PWR0103
+U 1 1 5E93B570
+P 2450 3650
+F 0 "#PWR0103" H 2450 3500 50  0001 C CNN
+F 1 "VCC" H 2467 3823 50  0000 C CNN
+F 2 "" H 2450 3650 50  0001 C CNN
+F 3 "" H 2450 3650 50  0001 C CNN
+	1    2450 3650
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0104
+U 1 1 5E93B8D1
+P 2350 4600
+F 0 "#PWR0104" H 2350 4350 50  0001 C CNN
+F 1 "GND" H 2355 4427 50  0000 C CNN
+F 2 "" H 2350 4600 50  0001 C CNN
+F 3 "" H 2350 4600 50  0001 C CNN
+	1    2350 4600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2050 4150 2050 4050
+Wire Wire Line
+	2050 4050 2100 4050
+Wire Wire Line
+	2400 4050 2450 4050
+Wire Wire Line
+	2650 4500 2650 4550
+Wire Wire Line
+	2650 4550 2350 4550
+Wire Wire Line
+	2350 4550 2350 4600
+Connection ~ 2050 4050
+Wire Wire Line
+	2050 4050 1550 4050
+Text Label 1550 4050 0    50   ~ 0
+BUTTON0
+Wire Wire Line
+	2450 3750 2450 3650
+Wire Wire Line
+	2350 4550 2050 4550
+Wire Wire Line
+	2050 4550 2050 4450
+Connection ~ 2350 4550
+Wire Wire Line
+	2450 4050 2650 4050
+Wire Wire Line
+	2650 4050 2650 4100
+Connection ~ 2450 4050
+$Comp
+L Switch:SW_Push SW1
+U 1 1 5E94E949
+P 2650 5800
+F 0 "SW1" V 2604 5948 50  0000 L CNN
+F 1 "SW_Push" V 2695 5948 50  0000 L CNN
+F 2 "Button_Switch_Keyboard:SW_Cherry_MX_1.00u_PCB" H 2650 6000 50  0001 C CNN
+F 3 "~" H 2650 6000 50  0001 C CNN
+	1    2650 5800
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:C C2
+U 1 1 5E94E94F
+P 2050 5800
+F 0 "C2" H 2165 5846 50  0000 L CNN
+F 1 "100n" H 2165 5755 50  0000 L CNN
+F 2 "Capacitor_THT:C_Disc_D3.0mm_W1.6mm_P2.50mm" H 2088 5650 50  0001 C CNN
+F 3 "~" H 2050 5800 50  0001 C CNN
+	1    2050 5800
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R4
+U 1 1 5E94E955
+P 2450 5400
+F 0 "R4" H 2520 5446 50  0000 L CNN
+F 1 "10k" H 2520 5355 50  0000 L CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 2380 5400 50  0001 C CNN
+F 3 "~" H 2450 5400 50  0001 C CNN
+	1    2450 5400
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R3
+U 1 1 5E94E95B
+P 2250 5550
+F 0 "R3" V 2043 5550 50  0000 C CNN
+F 1 "10k" V 2134 5550 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 2180 5550 50  0001 C CNN
+F 3 "~" H 2250 5550 50  0001 C CNN
+	1    2250 5550
+	0    1    1    0   
+$EndComp
+$Comp
+L power:VCC #PWR02
+U 1 1 5E94E961
+P 2450 5150
+F 0 "#PWR02" H 2450 5000 50  0001 C CNN
+F 1 "VCC" H 2467 5323 50  0000 C CNN
+F 2 "" H 2450 5150 50  0001 C CNN
+F 3 "" H 2450 5150 50  0001 C CNN
+	1    2450 5150
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR01
+U 1 1 5E94E967
+P 2350 6100
+F 0 "#PWR01" H 2350 5850 50  0001 C CNN
+F 1 "GND" H 2355 5927 50  0000 C CNN
+F 2 "" H 2350 6100 50  0001 C CNN
+F 3 "" H 2350 6100 50  0001 C CNN
+	1    2350 6100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2050 5650 2050 5550
+Wire Wire Line
+	2050 5550 2100 5550
+Wire Wire Line
+	2400 5550 2450 5550
+Wire Wire Line
+	2650 6000 2650 6050
+Wire Wire Line
+	2650 6050 2350 6050
+Wire Wire Line
+	2350 6050 2350 6100
+Connection ~ 2050 5550
+Wire Wire Line
+	2050 5550 1550 5550
+Text Label 1550 5550 0    50   ~ 0
+BUTTON1
+Wire Wire Line
+	2450 5250 2450 5150
+Wire Wire Line
+	2350 6050 2050 6050
+Wire Wire Line
+	2050 6050 2050 5950
+Connection ~ 2350 6050
+Wire Wire Line
+	2450 5550 2650 5550
+Wire Wire Line
+	2650 5550 2650 5600
+Connection ~ 2450 5550
+$Comp
+L Switch:SW_Push SW2
+U 1 1 5E9513E2
+P 4650 4300
+F 0 "SW2" V 4604 4448 50  0000 L CNN
+F 1 "SW_Push" V 4695 4448 50  0000 L CNN
+F 2 "Button_Switch_Keyboard:SW_Cherry_MX_1.00u_PCB" H 4650 4500 50  0001 C CNN
+F 3 "~" H 4650 4500 50  0001 C CNN
+	1    4650 4300
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:C C3
+U 1 1 5E9513E8
+P 4050 4300
+F 0 "C3" H 4165 4346 50  0000 L CNN
+F 1 "100n" H 4165 4255 50  0000 L CNN
+F 2 "Capacitor_THT:C_Disc_D3.0mm_W1.6mm_P2.50mm" H 4088 4150 50  0001 C CNN
+F 3 "~" H 4050 4300 50  0001 C CNN
+	1    4050 4300
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R6
+U 1 1 5E9513EE
+P 4450 3900
+F 0 "R6" H 4520 3946 50  0000 L CNN
+F 1 "10k" H 4520 3855 50  0000 L CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 4380 3900 50  0001 C CNN
+F 3 "~" H 4450 3900 50  0001 C CNN
+	1    4450 3900
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R5
+U 1 1 5E9513F4
+P 4250 4050
+F 0 "R5" V 4043 4050 50  0000 C CNN
+F 1 "10k" V 4134 4050 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 4180 4050 50  0001 C CNN
+F 3 "~" H 4250 4050 50  0001 C CNN
+	1    4250 4050
+	0    1    1    0   
+$EndComp
+$Comp
+L power:VCC #PWR05
+U 1 1 5E9513FA
+P 4450 3650
+F 0 "#PWR05" H 4450 3500 50  0001 C CNN
+F 1 "VCC" H 4467 3823 50  0000 C CNN
+F 2 "" H 4450 3650 50  0001 C CNN
+F 3 "" H 4450 3650 50  0001 C CNN
+	1    4450 3650
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR03
+U 1 1 5E951400
+P 4350 4600
+F 0 "#PWR03" H 4350 4350 50  0001 C CNN
+F 1 "GND" H 4355 4427 50  0000 C CNN
+F 2 "" H 4350 4600 50  0001 C CNN
+F 3 "" H 4350 4600 50  0001 C CNN
+	1    4350 4600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4050 4150 4050 4050
+Wire Wire Line
+	4050 4050 4100 4050
+Wire Wire Line
+	4400 4050 4450 4050
+Wire Wire Line
+	4650 4500 4650 4550
+Wire Wire Line
+	4650 4550 4350 4550
+Wire Wire Line
+	4350 4550 4350 4600
+Connection ~ 4050 4050
+Wire Wire Line
+	4050 4050 3550 4050
+Text Label 3550 4050 0    50   ~ 0
+BUTTON2
+Wire Wire Line
+	4450 3750 4450 3650
+Wire Wire Line
+	4350 4550 4050 4550
+Wire Wire Line
+	4050 4550 4050 4450
+Connection ~ 4350 4550
+Wire Wire Line
+	4450 4050 4650 4050
+Wire Wire Line
+	4650 4050 4650 4100
+Connection ~ 4450 4050
+$Comp
+L Switch:SW_Push SW3
+U 1 1 5E954189
+P 4650 5800
+F 0 "SW3" V 4604 5948 50  0000 L CNN
+F 1 "SW_Push" V 4695 5948 50  0000 L CNN
+F 2 "Button_Switch_Keyboard:SW_Cherry_MX_1.00u_PCB" H 4650 6000 50  0001 C CNN
+F 3 "~" H 4650 6000 50  0001 C CNN
+	1    4650 5800
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:C C4
+U 1 1 5E95418F
+P 4050 5800
+F 0 "C4" H 4165 5846 50  0000 L CNN
+F 1 "100n" H 4165 5755 50  0000 L CNN
+F 2 "Capacitor_THT:C_Disc_D3.0mm_W1.6mm_P2.50mm" H 4088 5650 50  0001 C CNN
+F 3 "~" H 4050 5800 50  0001 C CNN
+	1    4050 5800
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R8
+U 1 1 5E954195
+P 4450 5400
+F 0 "R8" H 4520 5446 50  0000 L CNN
+F 1 "10k" H 4520 5355 50  0000 L CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 4380 5400 50  0001 C CNN
+F 3 "~" H 4450 5400 50  0001 C CNN
+	1    4450 5400
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R7
+U 1 1 5E95419B
+P 4250 5550
+F 0 "R7" V 4043 5550 50  0000 C CNN
+F 1 "10k" V 4134 5550 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 4180 5550 50  0001 C CNN
+F 3 "~" H 4250 5550 50  0001 C CNN
+	1    4250 5550
+	0    1    1    0   
+$EndComp
+$Comp
+L power:VCC #PWR06
+U 1 1 5E9541A1
+P 4450 5150
+F 0 "#PWR06" H 4450 5000 50  0001 C CNN
+F 1 "VCC" H 4467 5323 50  0000 C CNN
+F 2 "" H 4450 5150 50  0001 C CNN
+F 3 "" H 4450 5150 50  0001 C CNN
+	1    4450 5150
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR04
+U 1 1 5E9541A7
+P 4350 6100
+F 0 "#PWR04" H 4350 5850 50  0001 C CNN
+F 1 "GND" H 4355 5927 50  0000 C CNN
+F 2 "" H 4350 6100 50  0001 C CNN
+F 3 "" H 4350 6100 50  0001 C CNN
+	1    4350 6100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4050 5650 4050 5550
+Wire Wire Line
+	4050 5550 4100 5550
+Wire Wire Line
+	4400 5550 4450 5550
+Wire Wire Line
+	4650 6000 4650 6050
+Wire Wire Line
+	4650 6050 4350 6050
+Wire Wire Line
+	4350 6050 4350 6100
+Connection ~ 4050 5550
+Wire Wire Line
+	4050 5550 3550 5550
+Text Label 3550 5550 0    50   ~ 0
+BUTTON3
+Wire Wire Line
+	4450 5250 4450 5150
+Wire Wire Line
+	4350 6050 4050 6050
+Wire Wire Line
+	4050 6050 4050 5950
+Connection ~ 4350 6050
+Wire Wire Line
+	4450 5550 4650 5550
+Wire Wire Line
+	4650 5550 4650 5600
+Connection ~ 4450 5550
+$Comp
+L Switch:SW_Push SW4
+U 1 1 5E963F82
+P 6650 4300
+F 0 "SW4" V 6604 4448 50  0000 L CNN
+F 1 "SW_Push" V 6695 4448 50  0000 L CNN
+F 2 "Button_Switch_Keyboard:SW_Cherry_MX_1.00u_PCB" H 6650 4500 50  0001 C CNN
+F 3 "~" H 6650 4500 50  0001 C CNN
+	1    6650 4300
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:C C5
+U 1 1 5E963F88
+P 6050 4300
+F 0 "C5" H 6165 4346 50  0000 L CNN
+F 1 "100n" H 6165 4255 50  0000 L CNN
+F 2 "Capacitor_THT:C_Disc_D3.0mm_W1.6mm_P2.50mm" H 6088 4150 50  0001 C CNN
+F 3 "~" H 6050 4300 50  0001 C CNN
+	1    6050 4300
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R10
+U 1 1 5E963F8E
+P 6450 3900
+F 0 "R10" H 6520 3946 50  0000 L CNN
+F 1 "10k" H 6520 3855 50  0000 L CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 6380 3900 50  0001 C CNN
+F 3 "~" H 6450 3900 50  0001 C CNN
+	1    6450 3900
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R9
+U 1 1 5E963F94
+P 6250 4050
+F 0 "R9" V 6043 4050 50  0000 C CNN
+F 1 "10k" V 6134 4050 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 6180 4050 50  0001 C CNN
+F 3 "~" H 6250 4050 50  0001 C CNN
+	1    6250 4050
+	0    1    1    0   
+$EndComp
+$Comp
+L power:VCC #PWR09
+U 1 1 5E963F9A
+P 6450 3650
+F 0 "#PWR09" H 6450 3500 50  0001 C CNN
+F 1 "VCC" H 6467 3823 50  0000 C CNN
+F 2 "" H 6450 3650 50  0001 C CNN
+F 3 "" H 6450 3650 50  0001 C CNN
+	1    6450 3650
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR07
+U 1 1 5E963FA0
+P 6350 4600
+F 0 "#PWR07" H 6350 4350 50  0001 C CNN
+F 1 "GND" H 6355 4427 50  0000 C CNN
+F 2 "" H 6350 4600 50  0001 C CNN
+F 3 "" H 6350 4600 50  0001 C CNN
+	1    6350 4600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6050 4150 6050 4050
+Wire Wire Line
+	6050 4050 6100 4050
+Wire Wire Line
+	6400 4050 6450 4050
+Wire Wire Line
+	6650 4500 6650 4550
+Wire Wire Line
+	6650 4550 6350 4550
+Wire Wire Line
+	6350 4550 6350 4600
+Connection ~ 6050 4050
+Wire Wire Line
+	6050 4050 5550 4050
+Text Label 5550 4050 0    50   ~ 0
+BUTTON4
+Wire Wire Line
+	6450 3750 6450 3650
+Wire Wire Line
+	6350 4550 6050 4550
+Wire Wire Line
+	6050 4550 6050 4450
+Connection ~ 6350 4550
+Wire Wire Line
+	6450 4050 6650 4050
+Wire Wire Line
+	6650 4050 6650 4100
+Connection ~ 6450 4050
+$Comp
+L Switch:SW_Push SW5
+U 1 1 5E963FB6
+P 6650 5800
+F 0 "SW5" V 6604 5948 50  0000 L CNN
+F 1 "SW_Push" V 6695 5948 50  0000 L CNN
+F 2 "Button_Switch_Keyboard:SW_Cherry_MX_1.00u_PCB" H 6650 6000 50  0001 C CNN
+F 3 "~" H 6650 6000 50  0001 C CNN
+	1    6650 5800
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:C C6
+U 1 1 5E963FBC
+P 6050 5800
+F 0 "C6" H 6165 5846 50  0000 L CNN
+F 1 "100n" H 6165 5755 50  0000 L CNN
+F 2 "Capacitor_THT:C_Disc_D3.0mm_W1.6mm_P2.50mm" H 6088 5650 50  0001 C CNN
+F 3 "~" H 6050 5800 50  0001 C CNN
+	1    6050 5800
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R12
+U 1 1 5E963FC2
+P 6450 5400
+F 0 "R12" H 6520 5446 50  0000 L CNN
+F 1 "10k" H 6520 5355 50  0000 L CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 6380 5400 50  0001 C CNN
+F 3 "~" H 6450 5400 50  0001 C CNN
+	1    6450 5400
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R11
+U 1 1 5E963FC8
+P 6250 5550
+F 0 "R11" V 6043 5550 50  0000 C CNN
+F 1 "10k" V 6134 5550 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 6180 5550 50  0001 C CNN
+F 3 "~" H 6250 5550 50  0001 C CNN
+	1    6250 5550
+	0    1    1    0   
+$EndComp
+$Comp
+L power:VCC #PWR010
+U 1 1 5E963FCE
+P 6450 5150
+F 0 "#PWR010" H 6450 5000 50  0001 C CNN
+F 1 "VCC" H 6467 5323 50  0000 C CNN
+F 2 "" H 6450 5150 50  0001 C CNN
+F 3 "" H 6450 5150 50  0001 C CNN
+	1    6450 5150
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR08
+U 1 1 5E963FD4
+P 6350 6100
+F 0 "#PWR08" H 6350 5850 50  0001 C CNN
+F 1 "GND" H 6355 5927 50  0000 C CNN
+F 2 "" H 6350 6100 50  0001 C CNN
+F 3 "" H 6350 6100 50  0001 C CNN
+	1    6350 6100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6050 5650 6050 5550
+Wire Wire Line
+	6050 5550 6100 5550
+Wire Wire Line
+	6400 5550 6450 5550
+Wire Wire Line
+	6650 6000 6650 6050
+Wire Wire Line
+	6650 6050 6350 6050
+Wire Wire Line
+	6350 6050 6350 6100
+Connection ~ 6050 5550
+Wire Wire Line
+	6050 5550 5550 5550
+Text Label 5550 5550 0    50   ~ 0
+BUTTON5
+Wire Wire Line
+	6450 5250 6450 5150
+Wire Wire Line
+	6350 6050 6050 6050
+Wire Wire Line
+	6050 6050 6050 5950
+Connection ~ 6350 6050
+Wire Wire Line
+	6450 5550 6650 5550
+Wire Wire Line
+	6650 5550 6650 5600
+Connection ~ 6450 5550
+$Comp
+L Switch:SW_Push SW6
+U 1 1 5E963FEA
+P 8650 4300
+F 0 "SW6" V 8604 4448 50  0000 L CNN
+F 1 "SW_Push" V 8695 4448 50  0000 L CNN
+F 2 "Button_Switch_Keyboard:SW_Cherry_MX_1.00u_PCB" H 8650 4500 50  0001 C CNN
+F 3 "~" H 8650 4500 50  0001 C CNN
+	1    8650 4300
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:C C7
+U 1 1 5E963FF0
+P 8050 4300
+F 0 "C7" H 8165 4346 50  0000 L CNN
+F 1 "100n" H 8165 4255 50  0000 L CNN
+F 2 "Capacitor_THT:C_Disc_D3.0mm_W1.6mm_P2.50mm" H 8088 4150 50  0001 C CNN
+F 3 "~" H 8050 4300 50  0001 C CNN
+	1    8050 4300
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R14
+U 1 1 5E963FF6
+P 8450 3900
+F 0 "R14" H 8520 3946 50  0000 L CNN
+F 1 "10k" H 8520 3855 50  0000 L CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 8380 3900 50  0001 C CNN
+F 3 "~" H 8450 3900 50  0001 C CNN
+	1    8450 3900
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R13
+U 1 1 5E963FFC
+P 8250 4050
+F 0 "R13" V 8043 4050 50  0000 C CNN
+F 1 "10k" V 8134 4050 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 8180 4050 50  0001 C CNN
+F 3 "~" H 8250 4050 50  0001 C CNN
+	1    8250 4050
+	0    1    1    0   
+$EndComp
+$Comp
+L power:VCC #PWR013
+U 1 1 5E964002
+P 8450 3650
+F 0 "#PWR013" H 8450 3500 50  0001 C CNN
+F 1 "VCC" H 8467 3823 50  0000 C CNN
+F 2 "" H 8450 3650 50  0001 C CNN
+F 3 "" H 8450 3650 50  0001 C CNN
+	1    8450 3650
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR011
+U 1 1 5E964008
+P 8350 4600
+F 0 "#PWR011" H 8350 4350 50  0001 C CNN
+F 1 "GND" H 8355 4427 50  0000 C CNN
+F 2 "" H 8350 4600 50  0001 C CNN
+F 3 "" H 8350 4600 50  0001 C CNN
+	1    8350 4600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8050 4150 8050 4050
+Wire Wire Line
+	8050 4050 8100 4050
+Wire Wire Line
+	8400 4050 8450 4050
+Wire Wire Line
+	8650 4500 8650 4550
+Wire Wire Line
+	8650 4550 8350 4550
+Wire Wire Line
+	8350 4550 8350 4600
+Connection ~ 8050 4050
+Wire Wire Line
+	8050 4050 7550 4050
+Text Label 7550 4050 0    50   ~ 0
+BUTTON6
+Wire Wire Line
+	8450 3750 8450 3650
+Wire Wire Line
+	8350 4550 8050 4550
+Wire Wire Line
+	8050 4550 8050 4450
+Connection ~ 8350 4550
+Wire Wire Line
+	8450 4050 8650 4050
+Wire Wire Line
+	8650 4050 8650 4100
+Connection ~ 8450 4050
+$Comp
+L Switch:SW_Push SW7
+U 1 1 5E96401E
+P 8650 5800
+F 0 "SW7" V 8604 5948 50  0000 L CNN
+F 1 "SW_Push" V 8695 5948 50  0000 L CNN
+F 2 "Button_Switch_Keyboard:SW_Cherry_MX_1.00u_PCB" H 8650 6000 50  0001 C CNN
+F 3 "~" H 8650 6000 50  0001 C CNN
+	1    8650 5800
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:C C8
+U 1 1 5E964024
+P 8050 5800
+F 0 "C8" H 8165 5846 50  0000 L CNN
+F 1 "100n" H 8165 5755 50  0000 L CNN
+F 2 "Capacitor_THT:C_Disc_D3.0mm_W1.6mm_P2.50mm" H 8088 5650 50  0001 C CNN
+F 3 "~" H 8050 5800 50  0001 C CNN
+	1    8050 5800
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R16
+U 1 1 5E96402A
+P 8450 5400
+F 0 "R16" H 8520 5446 50  0000 L CNN
+F 1 "10k" H 8520 5355 50  0000 L CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 8380 5400 50  0001 C CNN
+F 3 "~" H 8450 5400 50  0001 C CNN
+	1    8450 5400
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R15
+U 1 1 5E964030
+P 8250 5550
+F 0 "R15" V 8043 5550 50  0000 C CNN
+F 1 "10k" V 8134 5550 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 8180 5550 50  0001 C CNN
+F 3 "~" H 8250 5550 50  0001 C CNN
+	1    8250 5550
+	0    1    1    0   
+$EndComp
+$Comp
+L power:VCC #PWR014
+U 1 1 5E964036
+P 8450 5150
+F 0 "#PWR014" H 8450 5000 50  0001 C CNN
+F 1 "VCC" H 8467 5323 50  0000 C CNN
+F 2 "" H 8450 5150 50  0001 C CNN
+F 3 "" H 8450 5150 50  0001 C CNN
+	1    8450 5150
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR012
+U 1 1 5E96403C
+P 8350 6100
+F 0 "#PWR012" H 8350 5850 50  0001 C CNN
+F 1 "GND" H 8355 5927 50  0000 C CNN
+F 2 "" H 8350 6100 50  0001 C CNN
+F 3 "" H 8350 6100 50  0001 C CNN
+	1    8350 6100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8050 5650 8050 5550
+Wire Wire Line
+	8050 5550 8100 5550
+Wire Wire Line
+	8400 5550 8450 5550
+Wire Wire Line
+	8650 6000 8650 6050
+Wire Wire Line
+	8650 6050 8350 6050
+Wire Wire Line
+	8350 6050 8350 6100
+Connection ~ 8050 5550
+Wire Wire Line
+	8050 5550 7550 5550
+Text Label 7550 5550 0    50   ~ 0
+BUTTON7
+Wire Wire Line
+	8450 5250 8450 5150
+Wire Wire Line
+	8350 6050 8050 6050
+Wire Wire Line
+	8050 6050 8050 5950
+Connection ~ 8350 6050
+Wire Wire Line
+	8450 5550 8650 5550
+Wire Wire Line
+	8650 5550 8650 5600
+Connection ~ 8450 5550
+$Comp
+L SparkFun-Boards:SPARKFUN_PRO_MICRO B1
+U 1 1 5E98BB34
+P 2300 1900
+F 0 "B1" H 2300 2810 45  0000 C CNN
+F 1 "SPARKFUN_PRO_MICRO" H 2300 2726 45  0000 C CNN
+F 2 "SparkFun-KiCad-Libraries:SPARKFUN_PRO_MICRO" H 2300 2700 20  0001 C CNN
+F 3 "" H 2300 1900 50  0001 C CNN
+F 4 "XXX-00000" H 2300 2631 60  0000 C CNN "Feld4"
+	1    2300 1900
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole H1
+U 1 1 5E99EFEA
+P 5500 1500
+F 0 "H1" H 5600 1546 50  0000 L CNN
+F 1 "MountingHole" H 5600 1455 50  0000 L CNN
+F 2 "MountingHole:MountingHole_3.2mm_M3" H 5500 1500 50  0001 C CNN
+F 3 "~" H 5500 1500 50  0001 C CNN
+	1    5500 1500
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole H2
+U 1 1 5E99FCF9
+P 5500 1750
+F 0 "H2" H 5600 1796 50  0000 L CNN
+F 1 "MountingHole" H 5600 1705 50  0000 L CNN
+F 2 "MountingHole:MountingHole_3.2mm_M3" H 5500 1750 50  0001 C CNN
+F 3 "~" H 5500 1750 50  0001 C CNN
+	1    5500 1750
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole H3
+U 1 1 5E99FDBB
+P 5500 2000
+F 0 "H3" H 5600 2046 50  0000 L CNN
+F 1 "MountingHole" H 5600 1955 50  0000 L CNN
+F 2 "MountingHole:MountingHole_3.2mm_M3" H 5500 2000 50  0001 C CNN
+F 3 "~" H 5500 2000 50  0001 C CNN
+	1    5500 2000
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole H4
+U 1 1 5E99FEBA
+P 5500 2250
+F 0 "H4" H 5600 2296 50  0000 L CNN
+F 1 "MountingHole" H 5600 2205 50  0000 L CNN
+F 2 "MountingHole:MountingHole_3.2mm_M3" H 5500 2250 50  0001 C CNN
+F 3 "~" H 5500 2250 50  0001 C CNN
+	1    5500 2250
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:AVR-ISP-6 J1
+U 1 1 5E94559F
+P 4450 1600
+F 0 "J1" H 4171 1696 50  0000 R CNN
+F 1 "AVR-ISP-6" H 4171 1605 50  0000 R CNN
+F 2 "Connector_IDC:IDC-Header_2x03_P2.54mm_Vertical" V 4200 1650 50  0001 C CNN
+F 3 " ~" H 3175 1050 50  0001 C CNN
+	1    4450 1600
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:VCC #PWR0105
+U 1 1 5E9474AA
+P 4350 850
+F 0 "#PWR0105" H 4350 700 50  0001 C CNN
+F 1 "VCC" H 4367 1023 50  0000 C CNN
+F 2 "" H 4350 850 50  0001 C CNN
+F 3 "" H 4350 850 50  0001 C CNN
+	1    4350 850 
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0106
+U 1 1 5E947B34
+P 4350 2100
+F 0 "#PWR0106" H 4350 1850 50  0001 C CNN
+F 1 "GND" H 4355 1927 50  0000 C CNN
+F 2 "" H 4350 2100 50  0001 C CNN
+F 3 "" H 4350 2100 50  0001 C CNN
+	1    4350 2100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4350 2000 4350 2100
+Wire Wire Line
+	4350 850  4350 1100
+Wire Wire Line
+	4850 1400 5000 1400
+Wire Wire Line
+	4850 1500 5000 1500
+Wire Wire Line
+	4850 1600 5000 1600
+Wire Wire Line
+	4850 1700 5000 1700
+Text Label 5000 1400 0    50   ~ 0
+MISO
+Text Label 5000 1500 0    50   ~ 0
+MOSI
+Text Label 5000 1600 0    50   ~ 0
+SCK
+Text Label 5000 1700 0    50   ~ 0
+RST
+Text Label 2950 1550 0    50   ~ 0
+RST
+Wire Wire Line
+	2750 2150 2950 2150
+Wire Wire Line
+	2750 2250 2950 2250
+Wire Wire Line
+	2750 2350 2950 2350
+Text Label 2950 2250 0    50   ~ 0
+MISO
+Text Label 2950 2350 0    50   ~ 0
+MOSI
+Text Label 2950 2150 0    50   ~ 0
+SCK
+$EndSCHEMATC
