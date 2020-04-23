@@ -4,9 +4,9 @@
 
 #include "Keyboard.h"
 
-#define NUM_BUTTONS (4)
-#define BUTTON_INDEX_OFFSET (3)
-#define BUTTON_DISTANCE (2)
+#define NUM_BUTTONS (8)
+#define BUTTON_INDEX_OFFSET (2)
+#define BUTTON_DISTANCE (1)
 
 #define BUTTON_PRESSED(x) (x == LOW)
 
@@ -14,7 +14,7 @@
 
 uint8_t buttonState[NUM_BUTTONS];
 
-constexpr buttonIndexToPin(const uint8_t buttonIndex) {
+constexpr uint8_t buttonIndexToPin(const uint8_t buttonIndex) {
   return BUTTON_INDEX_OFFSET + (BUTTON_DISTANCE * buttonIndex);
 }
 
@@ -40,6 +40,14 @@ void releaseAllWithDelay() {
   Keyboard.releaseAll();
 }
 
+void singleButton(uint8_t keyValue, uint8_t keyCode) {
+  if (BUTTON_PRESSED(keyValue)) {
+    Keyboard.press(keyCode);
+  } else {
+    Keyboard.release(keyCode);
+  }
+}
+
 /**
  * \brief Add processing for actual button presses here.
  * \param buttonIndex The number of the button that was pressed/released.
@@ -58,7 +66,22 @@ void processEdge(uint8_t buttonIndex, uint8_t buttonValue) {
 #endif
 
   switch (buttonIndex) {
+    /* Top row */
+    case 7:
+      singleButton(buttonValue, KEY_F13);
+      break;
+    case 4:
+      singleButton(buttonValue, KEY_F14);
+      break;
+    case 2:
+      singleButton(buttonValue, KEY_F15);
+      break;
     case 0:
+      singleButton(buttonValue, KEY_F16);
+      break;
+
+    /* Bottom Row */
+    case 6:
       if (BUTTON_PRESSED(buttonValue)) {
         // button pressed
         //Keyboard.write('!');
@@ -67,7 +90,7 @@ void processEdge(uint8_t buttonIndex, uint8_t buttonValue) {
         releaseAllWithDelay();
       }
       break;
-    case 1:
+    case 5:
       if (BUTTON_PRESSED(buttonValue)) {
         Keyboard.press(KEY_LEFT_SHIFT);
       } else {
@@ -75,7 +98,7 @@ void processEdge(uint8_t buttonIndex, uint8_t buttonValue) {
       }
       break;
 
-    case 2:
+    case 3:
       if (BUTTON_PRESSED(buttonValue)) {
         Keyboard.press(KEY_LEFT_GUI);
         Keyboard.press(KEY_LEFT_CTRL);
@@ -84,7 +107,7 @@ void processEdge(uint8_t buttonIndex, uint8_t buttonValue) {
       }
       break;
       
-    case 3:
+    case 1:
       if (BUTTON_PRESSED(buttonValue)) {
         Keyboard.press(KEY_LEFT_GUI);
         Keyboard.press(KEY_LEFT_CTRL);
