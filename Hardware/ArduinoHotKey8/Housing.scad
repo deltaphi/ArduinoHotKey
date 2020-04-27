@@ -9,6 +9,7 @@ hole_to_side = 5.08;
 
 pcb_width = 96.52;
 pcb_depth = 77.47;
+pcb_thickness = 2;
 
 pcb_plate_distance = 2.5;
 
@@ -58,11 +59,11 @@ module standoff_bottom(x,y) {
 }
 
 // * Module in the top case
-module standoff_top(x,y) {
+module standoff_top(x,y,height) {
     //standoff_bottom(x,y);
     difference() {
-        translate([x, y ,0]) cylinder(h=pcb_front_inner_distance,d=standoff_outer_diameter);
-        translate([x, y ,-0.1]) cylinder(h=pcb_front_inner_distance+1,d=standoff_inner_diameter);
+        translate([x, y ,0]) cylinder(h=height,d=standoff_outer_diameter);
+        translate([x, y ,-0.1]) cylinder(h=height+1,d=standoff_inner_diameter);
     }
 }
 
@@ -146,10 +147,10 @@ translate([switch_y2+wall_thickness, switch_x4+wall_thickness, 0]) switch();
 }
 
 // add Standoffs
-standoff_top(standoff_x1, standoff_y1);
-standoff_top(standoff_x2, standoff_y1);
-standoff_top(standoff_x1, standoff_y2);
-standoff_top(standoff_x2, standoff_y2);
+translate([0,0,wall_thickness]) standoff_top(standoff_x1, standoff_y1, pcb_front_inner_distance);
+translate([0,0,wall_thickness]) standoff_top(standoff_x2, standoff_y1, pcb_front_inner_distance);
+translate([0,0,wall_thickness]) standoff_top(standoff_x1, standoff_y2, pcb_front_inner_distance);
+translate([0,0,wall_thickness]) standoff_top(standoff_x2, standoff_y2, pcb_front_inner_distance);
 
 // Switch plate
 //translate([0, 0, ]) cube([housing_depth, housing_width, wall_thickness]);
