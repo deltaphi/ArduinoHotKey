@@ -1,3 +1,5 @@
+$fn=50;
+
 wall_thickness = 1;
 standoff_wall_thickness = 1.5;
 standoff_inner_diameter = 2.5;
@@ -23,7 +25,7 @@ module standoff_top() {
   standoff_outer_diameter = standoff_inner_diameter + (2*standoff_wall_thickness);
   difference() { 
     cylinder(h=pcb_back_inner_distance-wall_thickness,d=standoff_outer_diameter);
-    cylinder(h=pcb_back_inner_distance-wall_thickness,d=standoff_inner_diameter);
+    cylinder(h=pcb_back_inner_distance-wall_thickness+1,d=standoff_inner_diameter);
   }
 }
 
