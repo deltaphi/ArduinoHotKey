@@ -1,6 +1,8 @@
 $fn=50;
 
 wall_thickness = 1;
+fit_tolerance = 0.2;
+
 standoff_wall_thickness = 1.5;
 standoff_inner_diameter = 2.5;
 standoff_screw_diameter = 5.1;
@@ -72,7 +74,6 @@ module standoff_bottom(x,y) {
 
 // * Module in the top case
 module standoff_top(x,y,height) {
-    //standoff_bottom(x,y);
     difference() {
         translate([x, y ,0]) cylinder(h=height,d=standoff_outer_diameter);
         translate([x, y ,-0.1]) cylinder(h=height+1,d=standoff_inner_diameter);
@@ -87,34 +88,39 @@ module standoff_top(x,y,height) {
 // Basic Bottom
 module bottomcase() {
 
-difference() {
+    difference() {
 
-// Main wall
-cube([housing_depth, housing_width, pcb_back_outer_distance]);
-    
-// Inner space
-translate([wall_thickness,wall_thickness,wall_thickness])
-cube([pcb_depth, pcb_width,pcb_back_inner_distance+1]);
-    
-// Hole for USB wire
-translate([62+wall_thickness,0,6+wall_thickness])
-rotate([90,90,0])
-cylinder(h=wall_thickness*3, d=12, center=true);
+        union() {
+            // Main wall
+            cube([housing_depth, housing_width, pcb_back_outer_distance]);
 
-translate([62+wall_thickness,0,12+wall_thickness])
-cube([12,wall_thickness*3,13], center = true);
-    
-// add holes from the bottom
-translate([standoff_x1, standoff_y1 ,-1]) cylinder(d=standoff_screw_diameter + (2*standoff_wall_thickness), h=3);
-translate([standoff_x2, standoff_y1 ,-1]) cylinder(d=standoff_screw_diameter + (2*standoff_wall_thickness), h=3);
-translate([standoff_x1, standoff_y2 ,-1]) cylinder(d=standoff_screw_diameter + (2*standoff_wall_thickness), h=3);
-translate([standoff_x2, standoff_y2 ,-1]) cylinder(d=standoff_screw_diameter + (2*standoff_wall_thickness), h=3);
-}
-// add Standoffs
-standoff_bottom(standoff_x1, standoff_y1);
-standoff_bottom(standoff_x2, standoff_y1);
-standoff_bottom(standoff_x1, standoff_y2);
-standoff_bottom(standoff_x2, standoff_y2);
+            // Inner lip
+            translate([((wall_thickness/2) + fit_tolerance) / 2,((wall_thickness/2) + fit_tolerance) / 2,0]) cube([housing_depth - (wall_thickness/2) - fit_tolerance, housing_width - (wall_thickness/2) - fit_tolerance, pcb_back_outer_distance+(pcb_thickness/2) - fit_tolerance]);
+        }
+            
+        // Inner space
+        translate([wall_thickness,wall_thickness,wall_thickness])
+        cube([pcb_depth, pcb_width,pcb_back_inner_distance+1]);
+            
+        // Hole for USB wire
+        translate([62+wall_thickness,0,6+wall_thickness])
+        rotate([90,90,0])
+        cylinder(h=wall_thickness*3, d=12, center=true);
+
+        translate([62+wall_thickness,0,12+wall_thickness])
+        cube([12,wall_thickness*3,12+3], center = true);
+            
+        // add holes from the bottom
+        translate([standoff_x1, standoff_y1 ,-1]) cylinder(d=standoff_screw_diameter + (2*standoff_wall_thickness), h=3);
+        translate([standoff_x2, standoff_y1 ,-1]) cylinder(d=standoff_screw_diameter + (2*standoff_wall_thickness), h=3);
+        translate([standoff_x1, standoff_y2 ,-1]) cylinder(d=standoff_screw_diameter + (2*standoff_wall_thickness), h=3);
+        translate([standoff_x2, standoff_y2 ,-1]) cylinder(d=standoff_screw_diameter + (2*standoff_wall_thickness), h=3);
+    }
+    // add Standoffs
+    standoff_bottom(standoff_x1, standoff_y1);
+    standoff_bottom(standoff_x2, standoff_y1);
+    standoff_bottom(standoff_x1, standoff_y2);
+    standoff_bottom(standoff_x2, standoff_y2);
 }
 
 
