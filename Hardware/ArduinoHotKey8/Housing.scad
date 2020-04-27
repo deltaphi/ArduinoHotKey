@@ -98,7 +98,7 @@ module bottomcase() {
             cube([housing_depth, housing_width, pcb_back_outer_distance]);
 
             // Inner lip
-            translate([((wall_thickness/2) + fit_tolerance) / 2,((wall_thickness/2) + fit_tolerance) / 2,0]) cube([housing_depth - (wall_thickness/2) - fit_tolerance, housing_width - (wall_thickness/2) - fit_tolerance, pcb_back_outer_distance+(pcb_thickness/2) - fit_tolerance]);
+            translate([lip_width, lip_width, 0]) cube([housing_depth - 2*lip_width, housing_width - 2*lip_width, pcb_back_outer_distance+lip_height]);
         }
             
         // Inner space
