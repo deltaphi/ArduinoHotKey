@@ -26,6 +26,9 @@ housing_depth = pcb_depth + (2*wall_thickness);
 pcb_back_inner_distance = 18;
 pcb_back_outer_distance = pcb_back_inner_distance + wall_thickness;
 
+lip_height = (pcb_thickness / 2) - (fit_tolerance / 2);
+lip_width = (wall_thickness / 2) - (fit_tolerance / 2);
+
 // Distance from the top
 switch_y1 = 33.02;
 switch_y2 = 58.42;
@@ -124,7 +127,7 @@ module bottomcase() {
 }
 
 
-translate([-100,0,0])bottomcase();
+translate([-100,0,0]) bottomcase();
 
 
 // Solid switch cube. Can be used to subtract from cubes to punch correct-sized holes.
@@ -137,13 +140,18 @@ module topcase() {
 
     difference() {
 
-        // Main wall
-        cube([housing_depth, housing_width,pcb_front_outer_distance]);
+        // Main wall with added height for lip
+        cube([housing_depth, housing_width, pcb_front_outer_distance + lip_height]);
             
-        translate([wall_thickness,wall_thickness,wall_thickness])
-        cube([pcb_depth, pcb_width,pcb_front_inner_distance+1]);
+        // Carve out interior
+        translate([wall_thickness, wall_thickness, wall_thickness])
+        cube([pcb_depth, pcb_width, pcb_front_inner_distance+2]);
 
-        // Switch holes
+        // Carve out lip
+        translate([lip_width, lip_width, pcb_front_outer_distance])
+        cube([housing_depth - 2*lip_width, housing_width - 2*lip_width, pcb_front_inner_distance+2]);
+
+        // Carve out switch holes
         translate([switch_y1+wall_thickness, switch_x1+wall_thickness, 0]) switch();
         translate([switch_y1+wall_thickness, switch_x2+wall_thickness, 0]) switch();
         translate([switch_y1+wall_thickness, switch_x3+wall_thickness, 0]) switch();
