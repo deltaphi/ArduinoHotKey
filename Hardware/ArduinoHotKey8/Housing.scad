@@ -3,6 +3,7 @@ $fn=50;
 wall_thickness = 1;
 standoff_wall_thickness = 1.5;
 standoff_inner_diameter = 2.5;
+standoff_screw_diameter = 5.1;
 
 hole_to_side = 5.08;
 
@@ -31,16 +32,28 @@ switch_x3 = 60.96;
 switch_x4 = 86.36;
 
 // Standoffs
-module standoff_top() {
-  standoff_outer_diameter = standoff_inner_diameter + (2*standoff_wall_thickness);
-  difference() { 
-    cylinder(h=pcb_back_inner_distance-wall_thickness,d=standoff_outer_diameter);
-    cylinder(h=pcb_back_inner_distance-wall_thickness+1,d=standoff_inner_diameter);
-  }
+module standoff_top(x,y) {
+    standoff_outer_diameter = standoff_inner_diameter + (2*standoff_wall_thickness);
+    standoff_outer_screw_diameter = standoff_screw_diameter + (2*standoff_wall_thickness);
+   
+    difference() {
+        union() {
+            translate([x, y ,0]) cylinder(h=(pcb_back_inner_distance-wall_thickness)/2,d=standoff_outer_screw_diameter);
+            translate([x, y ,0]) cylinder(h=(pcb_back_inner_distance-wall_thickness),d=standoff_outer_diameter);
+        }
+        translate([x, y ,-0.1]) cylinder(h=pcb_back_inner_distance-wall_thickness+1,d=standoff_inner_diameter);
+        translate([x, y ,-0.1]) cylinder(h=(pcb_back_inner_distance-wall_thickness+1)/2 -1,d=standoff_screw_diameter);
+    }
 }
 
 // Basic Bottom
 module bottomcase() {
+
+standoff_x1 = wall_thickness + hole_to_side;
+standoff_x2 = wall_thickness + pcb_depth - hole_to_side;
+
+standoff_y1 = wall_thickness + hole_to_side;
+standoff_y2 = wall_thickness + pcb_width - hole_to_side;
 
 difference() {
 
@@ -59,20 +72,17 @@ cylinder(h=wall_thickness*3, d=12, center=true);
 translate([62+wall_thickness,0,12+wall_thickness])
 //rotate([90,90,0])
 cube([12,wall_thickness*3,12], center = true);
+// add holes from the bottom
+translate([standoff_x1, standoff_y1 ,-1]) cylinder(d=standoff_screw_diameter + (2*standoff_wall_thickness), h=3);
+translate([standoff_x2, standoff_y1 ,-1]) cylinder(d=standoff_screw_diameter + (2*standoff_wall_thickness), h=3);
+translate([standoff_x1, standoff_y2 ,-1]) cylinder(d=standoff_screw_diameter + (2*standoff_wall_thickness), h=3);
+translate([standoff_x2, standoff_y2 ,-1]) cylinder(d=standoff_screw_diameter + (2*standoff_wall_thickness), h=3);
 }
-
-
-standoff_x1 = wall_thickness + hole_to_side;
-standoff_x2 = wall_thickness + pcb_depth - hole_to_side;
-
-standoff_y1 = wall_thickness + hole_to_side;
-standoff_y2 = wall_thickness + pcb_width - hole_to_side;
-
-translate([standoff_x1, standoff_y1 ,wall_thickness]) standoff_top();
-translate([standoff_x2, standoff_y1 ,wall_thickness]) standoff_top();
-translate([standoff_x1, standoff_y2 ,wall_thickness]) standoff_top();
-translate([standoff_x2, standoff_y2 ,wall_thickness]) standoff_top();
-
+// add Standoffs
+standoff_top(standoff_x1, standoff_y1);
+standoff_top(standoff_x2, standoff_y1);
+standoff_top(standoff_x1, standoff_y2);
+standoff_top(standoff_x2, standoff_y2);
 }
 
 
