@@ -32,9 +32,20 @@ switch_x3 = 60.96;
 switch_x4 = 86.36;
 
 // Standoffs
-module standoff_top(x,y) {
-    standoff_outer_diameter = standoff_inner_diameter + (2*standoff_wall_thickness);
-    standoff_outer_screw_diameter = standoff_screw_diameter + (2*standoff_wall_thickness);
+
+// * Dimenstions
+standoff_outer_diameter = standoff_inner_diameter + (2*standoff_wall_thickness);
+standoff_outer_screw_diameter = standoff_screw_diameter + (2*standoff_wall_thickness);
+
+// * locations in top and bottom
+standoff_x1 = wall_thickness + hole_to_side;
+standoff_x2 = wall_thickness + pcb_depth - hole_to_side;
+
+standoff_y1 = wall_thickness + hole_to_side;
+standoff_y2 = wall_thickness + pcb_width - hole_to_side;
+
+// * Module in the bottom case
+module standoff_bottom(x,y) {
    
     difference() {
         union() {
@@ -46,12 +57,19 @@ module standoff_top(x,y) {
     }
 }
 
-// Standoff locations in top and bottom
-standoff_x1 = wall_thickness + hole_to_side;
-standoff_x2 = wall_thickness + pcb_depth - hole_to_side;
+// * Module in the top case
+module standoff_top(x,y) {
+    //standoff_bottom(x,y);
+    difference() {
+        translate([x, y ,0]) cylinder(h=pcb_front_inner_distance,d=standoff_outer_diameter);
+        translate([x, y ,-0.1]) cylinder(h=pcb_front_inner_distance+1,d=standoff_inner_diameter);
+    }
+}
 
-standoff_y1 = wall_thickness + hole_to_side;
-standoff_y2 = wall_thickness + pcb_width - hole_to_side;
+
+
+
+
 
 // Basic Bottom
 module bottomcase() {
@@ -80,10 +98,10 @@ translate([standoff_x1, standoff_y2 ,-1]) cylinder(d=standoff_screw_diameter + (
 translate([standoff_x2, standoff_y2 ,-1]) cylinder(d=standoff_screw_diameter + (2*standoff_wall_thickness), h=3);
 }
 // add Standoffs
-standoff_top(standoff_x1, standoff_y1);
-standoff_top(standoff_x2, standoff_y1);
-standoff_top(standoff_x1, standoff_y2);
-standoff_top(standoff_x2, standoff_y2);
+standoff_bottom(standoff_x1, standoff_y1);
+standoff_bottom(standoff_x2, standoff_y1);
+standoff_bottom(standoff_x1, standoff_y2);
+standoff_bottom(standoff_x2, standoff_y2);
 }
 
 
