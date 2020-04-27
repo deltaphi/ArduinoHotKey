@@ -20,6 +20,16 @@ housing_depth = pcb_depth + (2*wall_thickness);
 
 pcb_back_inner_distance = 18;
 
+// Distance from the top
+switch_y1 = 33.02;
+switch_y2 = 58.42;
+
+// Distance from the left
+switch_x1 = 10.16;
+switch_x2 = 35.56;
+switch_x3 = 60.96;
+switch_x4 = 86.36;
+
 // Standoffs
 module standoff_top() {
   standoff_outer_diameter = standoff_inner_diameter + (2*standoff_wall_thickness);
