@@ -26,7 +26,7 @@ housing_depth = pcb_depth + (2*wall_thickness);
 pcb_back_inner_distance = 18;
 pcb_back_outer_distance = pcb_back_inner_distance + wall_thickness;
 
-lip_height = (pcb_thickness / 2) - (fit_tolerance / 2);
+lip_height = pcb_thickness + fit_tolerance;
 lip_width = (wall_thickness / 2) - (fit_tolerance / 2);
 
 // Distance from the top
@@ -103,15 +103,15 @@ module bottomcase() {
             
         // Inner space
         translate([wall_thickness,wall_thickness,wall_thickness])
-        cube([pcb_depth, pcb_width,pcb_back_inner_distance+1]);
+        cube([pcb_depth, pcb_width,pcb_back_inner_distance+lip_height+1]);
             
         // Hole for USB wire
         translate([62+wall_thickness,0,6+wall_thickness])
         rotate([90,90,0])
         cylinder(h=wall_thickness*3, d=12, center=true);
 
-        translate([62+wall_thickness,0,12+wall_thickness])
-        cube([12,wall_thickness*3,12+3], center = true);
+        translate([62+wall_thickness,0,14+wall_thickness])
+        cube([12,wall_thickness*3,12+lip_height], center = true);
             
         // add holes from the bottom
         translate([standoff_x1, standoff_y1 ,-1]) cylinder(d=standoff_screw_diameter + (2*standoff_wall_thickness), h=3);
