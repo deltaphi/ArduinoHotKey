@@ -58,19 +58,23 @@ module standoff_bottom(x,y) {
    
     // Leave 1mm space in the top screw holes
     standoff_bottom_screw_length = screw_length - pcb_thickness - pcb_front_outer_distance + 1;
-    standoff_screw_head_height = (pcb_back_inner_distance + wall_thickness) / 2;
+    standoff_screw_head_height = pcb_back_inner_distance - standoff_bottom_screw_length;
     
     difference() {
+        // Solid part
         union() {
-            // Screw head part
-            translate([x, y ,0]) cylinder(h=standoff_screw_head_height,d=standoff_outer_screw_diameter);
+            // Screw head part. Should leave standoff_bottom_screw_length - wall_thickness for the following thin part.
+            translate([x, y ,0]) cylinder(h=standoff_screw_head_height + wall_thickness,d=standoff_outer_screw_diameter);
             // Screw part
             translate([x, y ,0]) cylinder(h=pcb_back_outer_distance,d=standoff_outer_diameter);
         }
-        // Screw head part
-        translate([x, y ,-0.1]) cylinder(h=standoff_screw_head_height-1,d=standoff_screw_diameter);
         
-        // Screw part
+        // Take away the holes
+        
+        // Screw head hole part.
+        translate([x, y ,-0.1]) cylinder(h=standoff_screw_head_height,d=standoff_screw_diameter);
+        
+        // Screw hole part
         translate([x, y ,-0.1]) cylinder(h=pcb_back_outer_distance+1,d=standoff_inner_diameter);
     }
 }
