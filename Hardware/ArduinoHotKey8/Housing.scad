@@ -9,36 +9,35 @@ standoff_screw_diameter = 6; // Extra space to sink the screw into.
 standoff_screw_passthrough_diameter = 3.6; // 3.2 minimum when not tapping.
 screw_length = 12;
 
-hole_to_side = 5.08;
+hole_to_side = 5.08; // Value tested OK
 
 pcb_width = 96.52;
 pcb_depth = 77.47;
 pcb_thickness = 2;
-
-pcb_plate_distance = 2.5;
+pcb_side_fit_tolerance = 1;
 
 pcb_front_outer_distance = 5; // 13
 pcb_front_inner_distance = pcb_front_outer_distance - wall_thickness;
 
-housing_width = pcb_width + (2*(fit_tolerance + wall_thickness));
+housing_width = pcb_width + (2*(pcb_side_fit_tolerance + wall_thickness));
 
-housing_depth = pcb_depth + (2*(fit_tolerance + wall_thickness));
+housing_depth = pcb_depth + (2*(pcb_side_fit_tolerance + wall_thickness));
 
-pcb_back_inner_distance = 18;
+pcb_back_inner_distance = 18; // Value tested OK
 pcb_back_outer_distance = pcb_back_inner_distance + wall_thickness;
 
 lip_height = pcb_thickness + fit_tolerance;
 lip_width = (wall_thickness / 2) - (fit_tolerance / 2);
 
 // Distance from the top
-switch_y1 = 33.02;
-switch_y2 = 58.42;
+switch_y1 = 33.02; // Value tested OK
+switch_y2 = 58.42; // Value tested OK
 
 // Distance from the left
-switch_x1 = 10.16;
-switch_x2 = 35.56;
-switch_x3 = 60.96;
-switch_x4 = 86.36;
+switch_x1 = 10.16; // Value tested OK
+switch_x2 = 35.56; // Value tested OK
+switch_x3 = 60.96; // Value tested OK
+switch_x4 = 86.36; // Value tested OK
 
 // Standoffs
 
@@ -108,7 +107,7 @@ module bottomcase() {
             
         // Inner space
         translate([wall_thickness,wall_thickness,wall_thickness])
-        cube([pcb_depth, pcb_width,pcb_back_inner_distance+lip_height+1]);
+        cube([pcb_depth + (2*pcb_side_fit_tolerance), pcb_width + (2*pcb_side_fit_tolerance),pcb_back_inner_distance+lip_height+1]);
             
         // Hole for USB wire
         translate([62+wall_thickness,0,6+wall_thickness])
@@ -136,8 +135,31 @@ translate([-100,0,0]) bottomcase();
 
 
 // Solid switch cube. Can be used to subtract from cubes to punch correct-sized holes.
+// Designed so that the center plane represents the top of the case.
+// Adds a recess so that the plate thickness around the switch is limited.
 module switch() {
-    cube(14,center=true);
+    switch_hole_side = 14;// Value tested correctly for Cherry MX
+    switch_plate_thickness = 1.5;
+    
+    spacer_side = switch_hole_side + 2; // 1mm all round
+    
+    
+    translate([-switch_hole_side/2,-switch_hole_side/2,-1]) cube([switch_hole_side, switch_hole_side, wall_thickness+2]);
+    translate([-spacer_side/2,-spacer_side/2,switch_plate_thickness]) cube([spacer_side,spacer_side,wall_thickness+2]);
+}
+
+// switch();
+
+module switcharray() {
+    translate([switch_y1, switch_x1, 0]) switch();
+    translate([switch_y1, switch_x2, 0]) switch();
+    translate([switch_y1, switch_x3, 0]) switch();
+    translate([switch_y1, switch_x4, 0]) switch();
+            
+    translate([switch_y2, switch_x1, 0]) switch();
+    translate([switch_y2, switch_x2, 0]) switch();
+    translate([switch_y2, switch_x3, 0]) switch();
+    translate([switch_y2, switch_x4, 0]) switch();
 }
 
 // Basic top
@@ -150,22 +172,14 @@ module topcase() {
             
         // Carve out interior
         translate([wall_thickness, wall_thickness, wall_thickness])
-        cube([pcb_depth, pcb_width, pcb_front_inner_distance+2]);
+        cube([pcb_depth + (2*pcb_side_fit_tolerance), pcb_width + (2*pcb_side_fit_tolerance), pcb_front_inner_distance+2]);
 
         // Carve out lip
         translate([lip_width, lip_width, pcb_front_outer_distance])
         cube([housing_depth - 2*lip_width, housing_width - 2*lip_width, pcb_front_inner_distance+2]);
 
         // Carve out switch holes
-        translate([switch_y1+wall_thickness, switch_x1+wall_thickness, 0]) switch();
-        translate([switch_y1+wall_thickness, switch_x2+wall_thickness, 0]) switch();
-        translate([switch_y1+wall_thickness, switch_x3+wall_thickness, 0]) switch();
-        translate([switch_y1+wall_thickness, switch_x4+wall_thickness, 0]) switch();
-            
-        translate([switch_y2+wall_thickness, switch_x1+wall_thickness, 0]) switch();
-        translate([switch_y2+wall_thickness, switch_x2+wall_thickness, 0]) switch();
-        translate([switch_y2+wall_thickness, switch_x3+wall_thickness, 0]) switch();
-        translate([switch_y2+wall_thickness, switch_x4+wall_thickness, 0]) switch();
+        translate([wall_thickness+pcb_side_fit_tolerance, wall_thickness+pcb_side_fit_tolerance, 0]) switcharray();
     }
 
     // Standoffs
