@@ -72,7 +72,7 @@ module standoff_bottom(x,y) {
         // Take away the holes
         
         // Screw head hole part.
-        translate([x, y ,-0.1]) cylinder(h=standoff_screw_head_height + wall_thickness,d=standoff_screw_diameter);
+        translate([x, y ,-0.1]) cylinder(h=standoff_screw_head_height,d=standoff_screw_diameter);
         
         // Screw hole part
         translate([x, y ,-0.1]) cylinder(h=pcb_back_outer_distance+1,d=standoff_inner_diameter);
