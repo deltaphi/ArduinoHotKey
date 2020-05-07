@@ -1,3 +1,4 @@
+
 $fn=50;
 
 wall_thickness = 2; // Should be a multiple of 0.4
@@ -44,7 +45,7 @@ switch_x4 = 86.36; // Value tested OK
 // * Dimenstions
 standoff_outer_diameter = standoff_inner_diameter + (2*standoff_wall_thickness);
 standoff_outer_screw_diameter = standoff_screw_diameter + (2*standoff_wall_thickness);
-
+standoff_screwhole_diameter = standoff_screw_passthrough_diameter + (2*standoff_wall_thickness);
 
 // * locations in top and bottom
 standoff_x1 = wall_thickness + fit_tolerance + hole_to_side;
@@ -59,23 +60,23 @@ module standoff_bottom(x,y) {
     // Leave 1mm space in the top screw holes
     standoff_bottom_screw_length = screw_length - pcb_thickness - pcb_front_outer_distance + 1;
     standoff_screw_head_height = pcb_back_inner_distance - standoff_bottom_screw_length;
-    
+   
     difference() {
         // Solid part
         union() {
             // Screw head part. Should leave standoff_bottom_screw_length - wall_thickness for the following thin part.
             translate([x, y ,0]) cylinder(h=standoff_screw_head_height + wall_thickness,d=standoff_outer_screw_diameter);
             // Screw part
-            translate([x, y ,0]) cylinder(h=pcb_back_outer_distance,d=standoff_outer_diameter);
+            translate([x, y ,0]) cylinder(h=pcb_back_outer_distance,d=standoff_screwhole_diameter);
         }
-        
+       
         // Take away the holes
-        
+       
         // Screw head hole part.
         translate([x, y ,-0.1]) cylinder(h=standoff_screw_head_height,d=standoff_screw_diameter);
-        
+       
         // Screw hole part
-        translate([x, y ,-0.1]) cylinder(h=pcb_back_outer_distance+1,d=standoff_inner_diameter);
+        translate([x, y ,-0.1]) cylinder(h=pcb_back_outer_distance+1,d=standoff_screw_passthrough_diameter);
     }
 }
 
@@ -104,11 +105,11 @@ module bottomcase() {
             // Inner lip
             translate([lip_width, lip_width, 0]) cube([housing_depth - 2*lip_width, housing_width - 2*lip_width, pcb_back_outer_distance+lip_height]);
         }
-            
+           
         // Inner space
         translate([wall_thickness,wall_thickness,wall_thickness])
         cube([pcb_depth + (2*pcb_side_fit_tolerance), pcb_width + (2*pcb_side_fit_tolerance),pcb_back_inner_distance+lip_height+1]);
-            
+           
         // Hole for USB wire
         translate([62+wall_thickness,0,6+wall_thickness])
         rotate([90,90,0])
@@ -116,7 +117,7 @@ module bottomcase() {
 
         translate([62+wall_thickness,0,14+wall_thickness])
         cube([12,wall_thickness*3,12+lip_height], center = true);
-            
+           
         // add holes from the bottom
         translate([standoff_x1, standoff_y1 ,-0.1]) cylinder(d=standoff_screw_diameter + (2*standoff_wall_thickness), h=wall_thickness+1);
         translate([standoff_x2, standoff_y1 ,-0.1]) cylinder(d=standoff_screw_diameter + (2*standoff_wall_thickness), h=wall_thickness+1);
@@ -140,10 +141,10 @@ translate([-100,0,0]) bottomcase();
 module switch() {
     switch_hole_side = 14;// Value tested correctly for Cherry MX
     switch_plate_thickness = 1.5;
-    
+   
     spacer_side = switch_hole_side + 2; // 1mm all round
-    
-    
+   
+   
     translate([-switch_hole_side/2,-switch_hole_side/2,-1]) cube([switch_hole_side, switch_hole_side, wall_thickness+2]);
     translate([-spacer_side/2,-spacer_side/2,switch_plate_thickness]) cube([spacer_side,spacer_side,wall_thickness+2]);
 }
@@ -155,7 +156,7 @@ module switcharray() {
     translate([switch_y1, switch_x2, 0]) switch();
     translate([switch_y1, switch_x3, 0]) switch();
     translate([switch_y1, switch_x4, 0]) switch();
-            
+           
     translate([switch_y2, switch_x1, 0]) switch();
     translate([switch_y2, switch_x2, 0]) switch();
     translate([switch_y2, switch_x3, 0]) switch();
@@ -169,7 +170,7 @@ module topcase() {
 
         // Main wall with added height for lip
         cube([housing_depth, housing_width, pcb_front_outer_distance + lip_height]);
-            
+           
         // Carve out interior
         translate([wall_thickness, wall_thickness, wall_thickness])
         cube([pcb_depth + (2*pcb_side_fit_tolerance), pcb_width + (2*pcb_side_fit_tolerance), pcb_front_inner_distance+2]);
@@ -189,6 +190,4 @@ module topcase() {
     translate([0,0,wall_thickness-0.1]) standoff_top(standoff_x2, standoff_y2, pcb_front_inner_distance+0.1);
 }
 
-translate([20,0,0]) topcase();
-
-
+//translate([20,0,0]) topcase();
