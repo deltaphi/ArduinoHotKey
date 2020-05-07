@@ -190,4 +190,4 @@ module topcase() {
     translate([0,0,wall_thickness-0.1]) standoff_top(standoff_x2, standoff_y2, pcb_front_inner_distance+0.1);
 }
 
-//translate([20,0,0]) topcase();
+translate([20,0,0]) topcase();
