@@ -48,11 +48,11 @@ standoff_outer_screw_diameter = standoff_screw_diameter + (2*standoff_wall_thick
 standoff_screwhole_diameter = standoff_screw_passthrough_diameter + (2*standoff_wall_thickness);
 
 // * locations in top and bottom
-standoff_x1 = wall_thickness + fit_tolerance + hole_to_side;
-standoff_x2 = wall_thickness + fit_tolerance + pcb_depth - hole_to_side;
+standoff_x1 = wall_thickness + pcb_side_fit_tolerance + hole_to_side;
+standoff_x2 = wall_thickness + pcb_side_fit_tolerance + pcb_depth - hole_to_side;
 
-standoff_y1 = wall_thickness + fit_tolerance + hole_to_side;
-standoff_y2 = wall_thickness + fit_tolerance + pcb_width - hole_to_side;
+standoff_y1 = wall_thickness + pcb_side_fit_tolerance + hole_to_side;
+standoff_y2 = wall_thickness + pcb_side_fit_tolerance + pcb_width - hole_to_side;
 
 // * Module in the bottom case
 module standoff_bottom(x,y) {
@@ -132,7 +132,6 @@ module bottomcase() {
 }
 
 
-translate([-100,0,0]) bottomcase();
 
 
 // Solid switch cube. Can be used to subtract from cubes to punch correct-sized holes.
@@ -190,4 +189,9 @@ module topcase() {
     translate([0,0,wall_thickness-0.1]) standoff_top(standoff_x2, standoff_y2, pcb_front_inner_distance+0.1);
 }
 
-translate([20,0,0]) topcase();
+module all() {
+    translate([-100,0,0]) bottomcase();
+    translate([20,0,0]) topcase();
+}
+
+all();
