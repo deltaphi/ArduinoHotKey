@@ -2,7 +2,7 @@
   ArduinoHotKey Sketch.
 */
 
-#include "Keyboard.h"
+#include "HID-Project.h"
 
 #define NUM_BUTTONS (8)
 #define BUTTON_INDEX_OFFSET (2)
@@ -20,12 +20,13 @@ constexpr uint8_t buttonIndexToPin(const uint8_t buttonIndex) {
 
 void setup() {
 #if (USE_SERIAL_DEBUG == 1)
-  Serial.begin(9600);
+  Serial.begin(115200);
   Serial.println("ArduinoHotKey ready.");
 #endif
   
   // Start Keyboard library
-  Keyboard.begin();
+  Consumer.begin(); // Media Keys
+  Keyboard.begin(); // 'regular' Boot Keyboard
 
   // Configure all IO pins.
   for (uint8_t i = 0; i < NUM_BUTTONS; ++i) {
@@ -45,6 +46,14 @@ void singleButton(uint8_t keyValue, uint8_t keyCode) {
     Keyboard.press(keyCode);
   } else {
     Keyboard.release(keyCode);
+  }
+}
+
+void singleButtonConsumer(uint8_t keyValue, uint8_t keyCode) {
+  if (BUTTON_PRESSED(keyValue)) {
+    Consumer.press(keyCode);
+  } else {
+    Consumer.release(keyCode);
   }
 }
 
@@ -68,16 +77,16 @@ void processEdge(uint8_t buttonIndex, uint8_t buttonValue) {
   switch (buttonIndex) {
     /* Top row */
     case 7:
-      singleButton(buttonValue, KEY_F13);
+      singleButtonConsumer(buttonValue, MEDIA_PREVIOUS  );
       break;
     case 4:
-      singleButton(buttonValue, KEY_F14);
+      singleButtonConsumer(buttonValue, MEDIA_STOP    );
       break;
     case 2:
-      singleButton(buttonValue, KEY_F15);
+      singleButtonConsumer(buttonValue, MEDIA_PLAY_PAUSE    );
       break;
     case 0:
-      singleButton(buttonValue, KEY_F16);
+      singleButtonConsumer(buttonValue, MEDIA_NEXT  );
       break;
 
     /* Bottom Row */
