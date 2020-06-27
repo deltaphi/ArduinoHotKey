@@ -116,7 +116,7 @@ void processEdge(uint8_t buttonIndex, uint8_t buttonValue) {
         // button pressed
         // Skype Global Mute/Unmute Hotkey
         Keyboard.press(KEY_LEFT_CTRL);
-        Keyboard.press(KEY_M);
+        Keyboard.press(KEY_F4);
         releaseAllWithDelay();
       }
       break;
@@ -131,18 +131,13 @@ void processEdge(uint8_t buttonIndex, uint8_t buttonValue) {
       break;
 
     case 3:
-      if (BUTTON_PRESSED(buttonValue)) {
-        // Volume Down
-        singleButtonConsumer(buttonValue, MEDIA_VOL_DOWN);
-      }
+      // Volume Down
+      singleButtonConsumer(buttonValue, MEDIA_VOL_DOWN);
       break;
       
     case 1:
-      if (BUTTON_PRESSED(buttonValue)) {
-        // Volume Up
-        singleButtonConsumer(buttonValue, MEDIA_VOL_UP);
-      }
-      break;
+      // Volume Up
+      singleButtonConsumer(buttonValue, MEDIA_VOL_UP);
   }
   // -------------------------------
   // Stop tweaking your actions here
