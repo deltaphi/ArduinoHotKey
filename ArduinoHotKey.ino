@@ -1,8 +1,18 @@
 /*
-  ArduinoHotKey Sketch.
-*/
+ * ArduinoHotKey Sketch.
+ * 
+ * Hotkey-Keyboard for up to 8 Buttons on an Arduino Pro Nano (Atmega32)
+ * 
+ * Requires the HID-Project library:
+ *  https://www.arduinolibraries.info/libraries/hid-project
+ *  
+ */
 
 #include "HID-Project.h"
+
+// -------------------------
+// Tweak your paramters here
+// -------------------------
 
 #define NUM_BUTTONS (8)
 #define BUTTON_INDEX_OFFSET (2)
@@ -11,6 +21,12 @@
 #define BUTTON_PRESSED(x) (x == LOW)
 
 #define USE_SERIAL_DEBUG (0)
+
+// ----------------------------------------------------------
+// Stop Tweaking paramters here and continue tweaking actions
+// below.
+// ----------------------------------------------------------
+
 
 uint8_t buttonState[NUM_BUTTONS];
 
@@ -74,57 +90,63 @@ void processEdge(uint8_t buttonIndex, uint8_t buttonValue) {
   }  
 #endif
 
+
+// -------------------------
+// Tweak your actions here
+// -------------------------
+
   switch (buttonIndex) {
     /* Top row */
     case 7:
-      singleButtonConsumer(buttonValue, MEDIA_PREVIOUS  );
+      singleButtonConsumer(buttonValue, MEDIA_PREVIOUS);
       break;
     case 4:
-      singleButtonConsumer(buttonValue, MEDIA_STOP    );
+      singleButtonConsumer(buttonValue, MEDIA_STOP);
       break;
     case 2:
-      singleButtonConsumer(buttonValue, MEDIA_PLAY_PAUSE    );
+      singleButtonConsumer(buttonValue, MEDIA_PLAY_PAUSE);
       break;
     case 0:
-      singleButtonConsumer(buttonValue, MEDIA_NEXT  );
+      singleButtonConsumer(buttonValue, MEDIA_NEXT);
       break;
 
     /* Bottom Row */
     case 6:
       if (BUTTON_PRESSED(buttonValue)) {
         // button pressed
-        //Keyboard.write('!');
-        Keyboard.press(KEY_LEFT_GUI);
-        Keyboard.press(KEY_F4);
+        // Skype Global Mute/Unmute Hotkey
+        Keyboard.press(KEY_LEFT_CTRL);
+        Keyboard.press(KEY_M);
         releaseAllWithDelay();
       }
       break;
     case 5:
       if (BUTTON_PRESSED(buttonValue)) {
+        // Microsoft Teams Global Mute/Unmute Hotkey
+        Keyboard.press(KEY_LEFT_CTRL);
         Keyboard.press(KEY_LEFT_SHIFT);
-      } else {
-        Keyboard.release(KEY_LEFT_SHIFT);
+        Keyboard.press(KEY_M);
+        releaseAllWithDelay();
       }
       break;
 
     case 3:
       if (BUTTON_PRESSED(buttonValue)) {
-        Keyboard.press(KEY_LEFT_GUI);
-        Keyboard.press(KEY_LEFT_CTRL);
-        Keyboard.press(KEY_LEFT_ARROW);
-        releaseAllWithDelay();
+        // Volume Down
+        singleButtonConsumer(buttonValue, MEDIA_VOL_DOWN);
       }
       break;
       
     case 1:
       if (BUTTON_PRESSED(buttonValue)) {
-        Keyboard.press(KEY_LEFT_GUI);
-        Keyboard.press(KEY_LEFT_CTRL);
-        Keyboard.press(KEY_RIGHT_ARROW);
-        releaseAllWithDelay();
+        // Volume Up
+        singleButtonConsumer(buttonValue, MEDIA_VOL_UP);
       }
       break;
   }
+  // -------------------------------
+  // Stop tweaking your actions here
+  // -------------------------------
 }
 
 void loop() {
