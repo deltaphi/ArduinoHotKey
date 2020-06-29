@@ -115,7 +115,7 @@ void processEdge(uint8_t buttonIndex, uint8_t buttonValue) {
       if (BUTTON_PRESSED(buttonValue)) {
         // button pressed
         // Skype Global Mute/Unmute Hotkey
-        Keyboard.press(KEY_LEFT_CTRL);
+        Keyboard.press(KEY_LEFT_GUI);
         Keyboard.press(KEY_F4);
         releaseAllWithDelay();
       }
@@ -155,5 +155,4 @@ void loop() {
       buttonState[i] = value;
     }
   }
-  
 }
